@@ -1,7 +1,8 @@
 import React from "react";
+import "./Header.css";
 
 const header = () => (
-  <header>
+  <header class="nav">
     <ul>
       <li>
         <a href="/">Movies</a>
