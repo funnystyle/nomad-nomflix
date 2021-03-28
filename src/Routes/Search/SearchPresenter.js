@@ -1,1 +1,3 @@
-export default () => "Search";
+const SearchPresenter = () => "Search";
+
+export default SearchPresenter;
