@@ -6,6 +6,8 @@ export default class extends React.Component {
     nowPlaying: null,
     upcoming: null,
     popular: null,
+    error: null,
+    loading: null,
   };
 
   render() {
