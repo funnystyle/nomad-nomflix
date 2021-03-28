@@ -1,7 +1,7 @@
 import React from "react";
 import DetailPresenter from "./DetailPresenter";
 
-export default class extends React.Component {
+class DetailContainer extends React.Component {
   state = {
     result: null,
     loading: true,
@@ -19,3 +19,5 @@ export default class extends React.Component {
     );
   }
 }
+
+export default DetailContainer;
