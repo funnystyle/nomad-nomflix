@@ -11,7 +11,7 @@ const SearchPresenter = ({
   error,
 }) => null;
 
-SearchPresenter.PropTypes = {
+SearchPresenter.propTypes = {
   movieResults: PropTypes.array,
   tvResults: PropTypes.array,
   searchTerm: PropTypes.string,
