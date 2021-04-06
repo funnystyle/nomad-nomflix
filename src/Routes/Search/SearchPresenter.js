@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "Components/Loader";
 import Section from "Components/Section";
-import Error from "Components/Error";
+import Message from "Components/Message";
+import Poster from "Components/Poster";
 
 const Container = styled.div`
   padding: 20px;
@@ -44,18 +45,39 @@ const SearchPresenter = ({
         {movieResults && movieResults.length > 0 && (
           <Section title="Movie Results">
             {movieResults.map((movie) => (
-              <span key={movie.id}>{movie.title}</span>
+              <Poster
+                key={movie.id}
+                id={movie.id}
+                title={movie.original_title}
+                imageUrl={movie.poster_path}
+                rating={movie.vote_average}
+                isMovie={true}
+                year={movie.release_date && movie.release_date.substring(0, 4)}
+              />
             ))}
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
           <Section title="TV Show Results">
             {tvResults.map((show) => (
-              <span key={show.id}>{show.name}</span>
+              <Poster
+                key={show.id}
+                id={show.id}
+                title={show.original_name}
+                imageUrl={show.poster_path}
+                rating={show.vote_average}
+                year={show.release_date && show.release_date.substring(0, 4)}
+              />
             ))}
           </Section>
         )}
-        {error && <Error text={error} />}
+        {error && <Message color="#e74c3c" text={error} />}
+        {movieResults &&
+          movieResults.length === 0 &&
+          tvResults &&
+          tvResults.length === 0 && (
+            <Message text="Nothing found" color="#95a5a6" />
+          )}
       </>
     )}
   </Container>
