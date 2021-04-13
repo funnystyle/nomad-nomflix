@@ -6,6 +6,9 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 import noPoster from "assets/noPosterSmall.png";
 import IMDBLink from "Components/IMDBLink";
+import { Route } from "react-router";
+import { Link } from "react-router-dom";
+import Video from "Components/Video";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -69,6 +72,25 @@ const Overview = styled.p`
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
+`;
+
+const InsideMenu = styled("div")`
+  margin: 20px 0px;
+`;
+
+const InsideMenuList = styled("ul")`
+  display: flex;
+`;
+
+const InsideMenuItem = styled("li")`
+  margin-right: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 2px solid #1abc9c;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: ${(props) => (props.active ? "#1abc9c" : "transparent")};
+  color: ${(props) => (props.active ? "white" : "white")};
 `;
 
 export default function Detail({
@@ -161,6 +183,37 @@ export default function Detail({
           </ItemContainer>
           {isMovie ? <IMDBLink imdb_id={result.imdb_id} /> : ""}
           <Overview>{result.overview}</Overview>
+          {isMovie ? (
+            <>
+              <InsideMenu>
+                <InsideMenuList>
+                  <InsideMenuItem active={pathname === `/movie/${id}/videos`}>
+                    <Link to={`/movie/${id}/videos`}>Videos</Link>
+                  </InsideMenuItem>
+                </InsideMenuList>
+              </InsideMenu>
+
+              <Route
+                path={`/movie/:id/videos`}
+                render={() => <Video videos={result.videos} />}
+              />
+            </>
+          ) : (
+            <>
+              <InsideMenu>
+                <InsideMenuList>
+                  <InsideMenuItem active={pathname === `/show/${id}/videos`}>
+                    <Link to={`/show/${id}/videos`}>Videos</Link>
+                  </InsideMenuItem>
+                </InsideMenuList>
+              </InsideMenu>
+
+              <Route
+                path={`/show/:id/videos`}
+                render={() => <Video videos={result.videos} />}
+              />
+            </>
+          )}
         </Data>
       </Content>
       {error && <Message color="#e74c3c" text={error} />}

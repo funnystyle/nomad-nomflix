@@ -6,10 +6,10 @@ import {
   Switch,
 } from "react-router-dom";
 import Header from "Components/Header";
-import Home from "Routes/Home";
-import TV from "Routes/TV";
-import Search from "Routes/Search";
-import Detail from "Routes/Detail";
+import Home from "Screens/Home";
+import TV from "Screens/TV";
+import Search from "Screens/Search";
+import Detail from "Screens/Detail";
 
 const router = () => (
   <Router>
