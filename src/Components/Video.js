@@ -16,7 +16,7 @@ const Container = styled.div`
   background-position: center center;
   .swiper-button-prev,
   .swiper-button-next {
-    color: #ccc;
+    color: #fff;
   }
 `;
 SwiperCore.use([Navigation, A11y, EffectCube]);

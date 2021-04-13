@@ -9,6 +9,7 @@ import { Route } from "react-router";
 import { Link } from "react-router-dom";
 import Video from "Components/Video";
 import Company from "Components/Company";
+import Country from "Components/Country";
 
 import noPoster from "assets/noPosterSmall.png";
 
@@ -192,21 +193,29 @@ export default function Detail({
           <Overview>{result.overview}</Overview>
           <InsideMenu>
             <InsideMenuList>
-              <InsideMenuItem active={pathname === `/${type}/${id}/videos`}>
-                <Link to={`/${type}/${id}/videos`}>Videos</Link>
+              <InsideMenuItem active={pathname === `/${type}/${id}`}>
+                <Link to={`/${type}/${id}`}>Videos</Link>
               </InsideMenuItem>
               <InsideMenuItem active={pathname === `/${type}/${id}/companies`}>
                 <Link to={`/${type}/${id}/companies`}>Companies</Link>
               </InsideMenuItem>
+              <InsideMenuItem active={pathname === `/${type}/${id}/countries`}>
+                <Link to={`/${type}/${id}/countries`}>Countries</Link>
+              </InsideMenuItem>
             </InsideMenuList>
           </InsideMenu>
           <Route
-            path={`/${type}/:id/videos`}
+            path={`/${type}/:id`}
+            exact
             render={() => <Video videos={result.videos} />}
           />
           <Route
             path={`/${type}/:id/companies`}
             render={() => <Company companies={result.production_companies} />}
+          />
+          <Route
+            path={`/${type}/:id/countries`}
+            render={() => <Country companies={result.production_countries} />}
           />
         </Data>
       </Content>
