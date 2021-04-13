@@ -26,6 +26,11 @@ Learning React and ES6 by building a Movie Discovery App.
 - [ ] Build two tabs to show the Videos, Production Companies, Production Countries of TV Show/Movies
 - [ ] On TV Shows only, add a tab 'Seasons' to show all the seasons of the show with posters
 
+## ETC
+
+- [ ] Collections Link
+- [ ] /collections Route
+
 # Preview:
 
 Try it on [netlify](https://funnyflix.netlify.com/)
