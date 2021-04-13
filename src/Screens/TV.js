@@ -46,7 +46,7 @@ export default function TV() {
   return (
     <>
       <Helmet>
-        <title>TV Shows | Funflix</title>
+        <title>TV Shows | Funnflix</title>
       </Helmet>
       {loading ? (
         <Loader />
