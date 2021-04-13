@@ -10,10 +10,14 @@ import "swiper/components/navigation/navigation.scss";
 import "swiper/components/effect-cube/effect-cube.scss";
 
 const Container = styled.div`
-  width: 560px;
+  width: 500px;
   background-image: url(${loader});
   background-repeat: no-repeat;
   background-position: center center;
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #ccc;
+  }
 `;
 SwiperCore.use([Navigation, A11y, EffectCube]);
 
@@ -21,7 +25,6 @@ const Video = ({ videos }) => {
   return (
     <Container>
       <Swiper
-        spaceBetween={50}
         slidesPerView={1}
         navigation
         loop={true}
@@ -34,8 +37,8 @@ const Video = ({ videos }) => {
           .map((video, index) => (
             <SwiperSlide key={index}>
               <iframe
-                width="560"
-                height="315"
+                width="500"
+                height="280"
                 src={`https://www.youtube.com/embed/${video.key}`}
                 title="YouTube video player"
                 frameBorder="0"
