@@ -51,9 +51,14 @@ const Cover = styled.div`
   border-radius: 5px;
 `;
 
+const Img = styled.img`
+  height: 100%;
+  border-radius: 5px;
+`;
+
 const Data = styled.div`
   width: 70%;
-  margin-left: 20px;
+  margin-left: 50px;
 `;
 
 const Title = styled.h3`
@@ -153,12 +158,20 @@ export default function Detail({
         bgImage={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
       />
       <Content>
-        <Cover
+        {/* <Cover
           bgImage={
             result.poster_path
               ? `https://image.tmdb.org/t/p/original${result.poster_path}`
               : noPoster
           }
+        /> */}
+        <Img
+          src={
+            result.poster_path
+              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+              : noPoster
+          }
+          height="100%"
         />
         <Data>
           <Title>
