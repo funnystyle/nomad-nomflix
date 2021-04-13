@@ -1,8 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
+import { moviesApi, tvApi } from "api";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import noPoster from "assets/noPosterSmall.png";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -17,7 +18,7 @@ const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${props => props.bgImage});
+  background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
   filter: blur(3px);
@@ -35,7 +36,7 @@ const Content = styled.div`
 
 const Cover = styled.div`
   width: 30%;
-  background-image: url(${props => props.bgImage});
+  background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
   height: 100%;
@@ -68,8 +69,41 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
-  loading ? (
+export default function Detail({
+  match: {
+    params: { id },
+  },
+  history: { push },
+  location: { pathname },
+}) {
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isMovie] = useState(pathname.includes("/movie"));
+
+  async function getDeatil() {
+    const parsedId = parseInt(id);
+    if (isNaN(parsedId)) {
+      return push("/");
+    }
+
+    try {
+      const { data: result } = isMovie
+        ? await moviesApi.movieDetail(parsedId)
+        : await tvApi.showDetail(parsedId);
+      setResult(result);
+    } catch {
+      setError("Can't find anything.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getDeatil();
+  }, []);
+
+  return loading ? (
     <>
       <Helmet>
         <title>Loading | Nomflix</title>
@@ -92,7 +126,7 @@ const DetailPresenter = ({ result, loading, error }) =>
           bgImage={
             result.poster_path
               ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : require("../../assets/noPosterSmall.png")
+              : noPoster
           }
         />
         <Data>
@@ -104,8 +138,12 @@ const DetailPresenter = ({ result, loading, error }) =>
           <ItemContainer>
             <Item>
               {result.release_date
-                ? result.release_date.substring(0, 4)
-                : result.first_air_date.substring(0, 4)}
+                ? result.release_date
+                  ? result.release_date.substring(0, 4)
+                  : "-"
+                : result.first_air_date
+                ? result.first_air_date.substring(0, 4)
+                : "-"}
             </Item>
             <Divider>•</Divider>
             <Item>
@@ -113,12 +151,13 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
             <Divider>•</Divider>
             <Item>
-              {result.genres &&
-                result.genres.map((genre, index) =>
-                  index === result.genres.length - 1
-                    ? genre.name
-                    : `${genre.name} / `
-                )}
+              {result.genres && result.genres.length > 0
+                ? result.genres.map((genre, index) =>
+                    index === result.genres.length - 1
+                      ? genre.name
+                      : `${genre.name} / `
+                  )
+                : "-"}
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
@@ -126,11 +165,4 @@ const DetailPresenter = ({ result, loading, error }) =>
       </Content>
     </Container>
   );
-
-DetailPresenter.propTypes = {
-  result: PropTypes.object,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.string
-};
-
-export default DetailPresenter;
+}

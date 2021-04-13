@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import noPoster from "assets/noPoster.jpg";
+import noPoster from "assets/noPosterSmall.png";
 
 const Container = styled.div`
   font-size: 12px;
@@ -51,11 +51,11 @@ const Poster = ({ id, imageUrl, title, rating, year, isMovie = false }) => (
   <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
     <Container>
       <ImageContainer>
-        <Image bgUrl={
-          imageUrl 
-            ? `https://image.tmdb.org/t/p/w300${imageUrl}`
-            : noPoster
-        } />
+        <Image
+          bgUrl={
+            imageUrl ? `https://image.tmdb.org/t/p/w300${imageUrl}` : noPoster
+          }
+        />
         <Rating>
           <span role="img" aria-label="rating">
             ⭐️
