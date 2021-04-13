@@ -4,10 +4,10 @@ Learning React and ES6 by building a Movie Discovery App.
 
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
 
 ## API Verbs
 
@@ -22,13 +22,10 @@ Learning React and ES6 by building a Movie Discovery App.
 
 ## Code Challenges
 
-- [ ] IMDB Link
-- [ ] Tabs inside of Movie / Show Details (YT Videos, Production Company & Countries)
-- [ ] Collections Link
-- [ ] /collections Route
-- [ ] On TV Show, show seasons and creators
-
+- [x] Add a link to IMDB of the TV Show/Movie
+- [ ] Build two tabs to show the Videos, Production Companies, Production Countries of TV Show/Movies
+- [ ] On TV Shows only, add a tab 'Seasons' to show all the seasons of the show with posters
 
 # Preview:
 
-Try it on [netlify](https://funnyflix.netlify.com/#/)
+Try it on [netlify](https://funnyflix.netlify.com/)
