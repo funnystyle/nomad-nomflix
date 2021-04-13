@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Video from "Components/Video";
 import Company from "Components/Company";
 import Country from "Components/Country";
+import Season from "Components/Season";
 
 import noPoster from "assets/noPosterSmall.png";
 
@@ -216,6 +217,13 @@ export default function Detail({
               <InsideMenuItem active={pathname === `/${type}/${id}/countries`}>
                 <Link to={`/${type}/${id}/countries`}>Countries</Link>
               </InsideMenuItem>
+              {!isMovie ? (
+                <InsideMenuItem active={pathname === `/show/${id}/seasons`}>
+                  <Link to={`/show/${id}/seasons`}>Seasons</Link>
+                </InsideMenuItem>
+              ) : (
+                ""
+              )}
             </InsideMenuList>
           </InsideMenu>
           <Route
@@ -231,6 +239,14 @@ export default function Detail({
             path={`/${type}/:id/countries`}
             render={() => <Country companies={result.production_countries} />}
           />
+          {!isMovie ? (
+            <Route
+              path={`/${type}/:id/seasons`}
+              render={() => <Season seasons={result.seasons} />}
+            />
+          ) : (
+            ""
+          )}
         </Data>
       </Content>
       {error && <Message color="#e74c3c" text={error} />}
