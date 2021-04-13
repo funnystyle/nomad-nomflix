@@ -143,7 +143,7 @@ export default function Detail({
   return loading ? (
     <>
       <Helmet>
-        <title>Loading | Funnflix</title>
+        <title>Loading | FunnyFlix</title>
       </Helmet>
       <Loader />
     </>
@@ -151,7 +151,7 @@ export default function Detail({
     <Container>
       <Helmet>
         <title>
-          {isMovie ? result.original_title : result.original_name} | Funnflix
+          {isMovie ? result.original_title : result.original_name} | FunnyFlix
         </title>
       </Helmet>
       <Backdrop

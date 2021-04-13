@@ -46,14 +46,14 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Movies | Funnflix</title>
+        <title>Movies | FunnyFlix</title>
       </Helmet>
       {loading ? (
         <Loader />
       ) : (
         <Container>
           <Helmet>
-            <title>Movies | Funnflix</title>
+            <title>Movies | FunnyFlix</title>
           </Helmet>
           {nowPlaying && nowPlaying.length > 0 && (
             <Section title="Now Playing">
