@@ -16,6 +16,17 @@ const Header = styled.header`
   box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
 `;
 
+const Title = styled.div`
+  background-color: #c23616;
+  margin-right: 20px;
+  padding: 10px 20px 10px 10px;
+  font-size: 30px;
+  font-weight: 500;
+  color: #f5f6fa;
+  border-radius: 0 0 20px 0;
+  /* opacity: 0.5; */
+`;
+
 const List = styled.ul`
   display: flex;
 `;
@@ -25,7 +36,7 @@ const Item = styled.li`
   height: 50px;
   text-align: center;
   border-bottom: 3px solid
-    ${(props) => (props.current ? "#3498db" : "transparent")};
+    ${(props) => (props.current ? "#c23616" : "transparent")};
   transition: border-bottom 0.5s ease-in-out;
 `;
 
@@ -34,10 +45,12 @@ const SLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 20px;
 `;
 
 export default withRouter(({ location: { pathname } }) => (
   <Header>
+    <Title>Funflix</Title>
     <List>
       <Item current={pathname === "/" || pathname.startsWith("/movie")}>
         <SLink to="/">Movies</SLink>

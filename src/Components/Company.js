@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   padding: 10px;
   margin-right: 1%;
@@ -24,18 +24,24 @@ const CompanyName = styled.span`
 
 const Company = ({ companies }) => (
   <Container>
-    {companies.map((company, index) => (
-      <Box key={company.id}>
-        {company.logo_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w300${company.logo_path}`}
-            width="300px"
-          />
-        ) : (
-          <CompanyName>{company.name}</CompanyName>
-        )}
+    {companies && companies.length > 0 ? (
+      companies.map((company, index) => (
+        <Box key={company.id}>
+          {company.logo_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w300${company.logo_path}`}
+              width="300px"
+            />
+          ) : (
+            <CompanyName>{company.name}</CompanyName>
+          )}
+        </Box>
+      ))
+    ) : (
+      <Box>
+        <CompanyName>No Companies Data</CompanyName>
       </Box>
-    ))}
+    )}
   </Container>
 );
 export default Company;

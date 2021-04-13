@@ -64,7 +64,7 @@ export default function Search() {
   return (
     <Container>
       <Helmet>
-        <title>Search | Nomflix</title>
+        <title>Search | Funflix</title>
       </Helmet>
       <Form onSubmit={handleSubmit}>
         <Input

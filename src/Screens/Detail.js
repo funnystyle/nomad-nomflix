@@ -53,7 +53,7 @@ const Cover = styled.div`
 
 const Data = styled.div`
   width: 70%;
-  margin-left: 10px;
+  margin-left: 20px;
 `;
 
 const Title = styled.h3`
@@ -73,7 +73,7 @@ const Divider = styled.span`
 `;
 
 const Overview = styled.p`
-  font-size: 12px;
+  font-size: 13px;
   opacity: 0.7;
   line-height: 1.5;
   width: 50%;
@@ -92,11 +92,12 @@ const InsideMenuItem = styled("li")`
   text-transform: uppercase;
   font-weight: 600;
   border: 2px solid #1abc9c;
-  padding: 10px 10px 5px 10px;
+  padding: 8px 10px 5px 10px;
   border-radius: 8px 8px 0 0;
   background-color: ${(props) => (props.active ? "#1abc9c" : "transparent")};
   color: ${(props) => (props.active ? "white" : "white")};
   transition: 0.3s ease-in-out;
+  font-size: 15px;
 `;
 
 export default function Detail({
@@ -137,7 +138,7 @@ export default function Detail({
   return loading ? (
     <>
       <Helmet>
-        <title>Loading | Nomflix</title>
+        <title>Loading | Funflix</title>
       </Helmet>
       <Loader />
     </>
@@ -145,7 +146,7 @@ export default function Detail({
     <Container>
       <Helmet>
         <title>
-          {isMovie ? result.original_title : result.original_name} | Nomflix
+          {isMovie ? result.original_title : result.original_name} | Funflix
         </title>
       </Helmet>
       <Backdrop

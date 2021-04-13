@@ -1,4 +1,4 @@
-# Nomflix
+# Funflix
 
 Learning React and ES6 by building a Movie Discovery App.
 
@@ -23,7 +23,7 @@ Learning React and ES6 by building a Movie Discovery App.
 ## Code Challenges
 
 - [x] Add a link to IMDB of the TV Show/Movie
-- [ ] Build two tabs to show the Videos, Production Companies, Production Countries of TV Show/Movies
+- [x] Build two tabs to show the Videos, Production Companies, Production Countries of TV Show/Movies
 - [ ] On TV Shows only, add a tab 'Seasons' to show all the seasons of the show with posters
 
 ## ETC

@@ -6,7 +6,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   padding: 10px;
   margin-right: 1%;
@@ -24,11 +24,17 @@ const CountryName = styled.span`
 
 const Country = ({ companies }) => (
   <Container>
-    {companies.map((country, index) => (
-      <Box key={country.id}>
-        <CountryName>{country.name}</CountryName>
+    {companies && companies.length > 0 ? (
+      companies.map((country, index) => (
+        <Box key={country.id}>
+          <CountryName>{country.name}</CountryName>
+        </Box>
+      ))
+    ) : (
+      <Box>
+        <CountryName>No Countries Data</CountryName>
       </Box>
-    ))}
+    )}
   </Container>
 );
 export default Country;
