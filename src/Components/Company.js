@@ -31,6 +31,7 @@ const Company = ({ companies }) => (
             <img
               src={`https://image.tmdb.org/t/p/w300${company.logo_path}`}
               width="300px"
+              alt={`${company.name} logo`}
             />
           ) : (
             <CompanyName>{company.name}</CompanyName>
