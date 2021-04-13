@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   padding: 10px;
   margin-right: 1%;
