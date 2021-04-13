@@ -42,14 +42,14 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const Cover = styled.div`
-  width: 33%;
-  background-image: url(${(props) => props.bgImage});
-  background-position: center center;
-  background-size: cover;
-  height: 100%;
-  border-radius: 5px;
-`;
+// const Cover = styled.div`
+//   width: 33%;
+//   background-image: url(${(props) => props.bgImage});
+//   background-position: center center;
+//   background-size: cover;
+//   height: 100%;
+//   border-radius: 5px;
+// `;
 
 const Img = styled.img`
   height: 100%;
