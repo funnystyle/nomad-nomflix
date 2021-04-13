@@ -83,12 +83,12 @@ const InsideMenuList = styled("ul")`
 `;
 
 const InsideMenuItem = styled("li")`
-  margin-right: 20px;
+  margin-right: 5px;
   text-transform: uppercase;
   font-weight: 600;
   border: 2px solid #1abc9c;
-  padding: 5px;
-  border-radius: 3px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 8px 8px 0 0;
   background-color: ${(props) => (props.active ? "#1abc9c" : "transparent")};
   color: ${(props) => (props.active ? "white" : "white")};
 `;
