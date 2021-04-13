@@ -11,7 +11,7 @@ const Box = styled.div`
   display: flex;
   padding: 10px;
   margin-right: 1%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -19,8 +19,9 @@ const Box = styled.div`
 `;
 
 const CompanyName = styled.span`
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
+  color: #222;
 `;
 
 const Company = ({ companies }) => (
