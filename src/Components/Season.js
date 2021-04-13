@@ -9,14 +9,18 @@ const Container = styled.div`
 const Box = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
-  padding: 5px;
+  padding: 2px;
   margin-right: 1%;
   margin-bottom: 10px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  width: 160px;
+  width: 154px;
   text-align: center;
+`;
+
+const Img = styled.img`
+  border-radius: 3px;
 `;
 
 const SeasonName = styled.div`
@@ -31,7 +35,7 @@ const Season = ({ seasons }) => (
       seasons.map((season, index) => (
         <Box key={season.id}>
           {season.poster_path ? (
-            <img
+            <Img
               src={`https://image.tmdb.org/t/p/w200${season.poster_path}`}
               width="100%"
               alt={`${season.name} poster`}
