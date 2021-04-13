@@ -3,6 +3,7 @@ import { moviesApi, tvApi } from "api";
 import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import Message from "Components/Message";
 import noPoster from "assets/noPosterSmall.png";
 
 const Container = styled.div`
@@ -81,27 +82,27 @@ export default function Detail({
   const [error, setError] = useState(null);
   const [isMovie] = useState(pathname.includes("/movie"));
 
-  async function getDeatil() {
-    const parsedId = parseInt(id);
-    if (isNaN(parsedId)) {
-      return push("/");
-    }
-
-    try {
-      const { data: result } = isMovie
-        ? await moviesApi.movieDetail(parsedId)
-        : await tvApi.showDetail(parsedId);
-      setResult(result);
-    } catch {
-      setError("Can't find anything.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
   useEffect(() => {
+    async function getDeatil() {
+      const parsedId = parseInt(id);
+      if (isNaN(parsedId)) {
+        return push("/");
+      }
+
+      try {
+        const { data: result } = isMovie
+          ? await moviesApi.movieDetail(parsedId)
+          : await tvApi.showDetail(parsedId);
+        setResult(result);
+      } catch {
+        setError("Can't find anything.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
     getDeatil();
-  }, []);
+  }, [id, isMovie, push]);
 
   return loading ? (
     <>
@@ -163,6 +164,7 @@ export default function Detail({
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
+      {error && <Message color="#e74c3c" text={error} />}
     </Container>
   );
 }
