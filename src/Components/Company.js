@@ -15,7 +15,7 @@ const Box = styled.div`
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  width: 220px;
+  width: 170px;
   text-align: center;
 `;
 
@@ -33,7 +33,7 @@ const Company = ({ companies }) => (
           {company.logo_path ? (
             <img
               src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-              width="300px"
+              width="100%"
               alt={`${company.name} logo`}
             />
           ) : (
