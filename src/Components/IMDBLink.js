@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  margin-bottom: 10px;
+const Container = styled.span`
+  svg {
+    margin-bottom: -4px;
+  }
 `;
 
 const IMDBLink = ({ imdb_id }) => (
@@ -14,8 +16,8 @@ const IMDBLink = ({ imdb_id }) => (
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="64"
-        height="32"
+        width="40"
+        height="20"
         viewBox="0 0 64 32"
         version="1.1"
       >

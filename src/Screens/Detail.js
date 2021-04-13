@@ -4,11 +4,13 @@ import styled from "styled-components";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
-import noPoster from "assets/noPosterSmall.png";
 import IMDBLink from "Components/IMDBLink";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
 import Video from "Components/Video";
+import Company from "Components/Company";
+
+import noPoster from "assets/noPosterSmall.png";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -61,7 +63,9 @@ const ItemContainer = styled.div`
   margin: 20px 0;
 `;
 
-const Item = styled.span``;
+const Item = styled.span`
+  font-size: 15px;
+`;
 
 const Divider = styled.span`
   margin: 0 10px;
@@ -83,7 +87,7 @@ const InsideMenuList = styled("ul")`
 `;
 
 const InsideMenuItem = styled("li")`
-  margin-right: 5px;
+  margin-right: 1px;
   text-transform: uppercase;
   font-weight: 600;
   border: 2px solid #1abc9c;
@@ -91,6 +95,7 @@ const InsideMenuItem = styled("li")`
   border-radius: 8px 8px 0 0;
   background-color: ${(props) => (props.active ? "#1abc9c" : "transparent")};
   color: ${(props) => (props.active ? "white" : "white")};
+  transition: 0.3s ease-in-out;
 `;
 
 export default function Detail({
@@ -104,6 +109,7 @@ export default function Detail({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isMovie] = useState(pathname.includes("/movie"));
+  const [type] = useState(pathname.includes("/movie") ? "movie" : "show");
 
   useEffect(() => {
     async function getDeatil() {
@@ -180,40 +186,28 @@ export default function Detail({
                   )
                 : "-"}
             </Item>
+            {isMovie ? <Divider>•</Divider> : ""}
+            {isMovie ? <IMDBLink imdb_id={result.imdb_id} /> : ""}
           </ItemContainer>
-          {isMovie ? <IMDBLink imdb_id={result.imdb_id} /> : ""}
           <Overview>{result.overview}</Overview>
-          {isMovie ? (
-            <>
-              <InsideMenu>
-                <InsideMenuList>
-                  <InsideMenuItem active={pathname === `/movie/${id}/videos`}>
-                    <Link to={`/movie/${id}/videos`}>Videos</Link>
-                  </InsideMenuItem>
-                </InsideMenuList>
-              </InsideMenu>
-
-              <Route
-                path={`/movie/:id/videos`}
-                render={() => <Video videos={result.videos} />}
-              />
-            </>
-          ) : (
-            <>
-              <InsideMenu>
-                <InsideMenuList>
-                  <InsideMenuItem active={pathname === `/show/${id}/videos`}>
-                    <Link to={`/show/${id}/videos`}>Videos</Link>
-                  </InsideMenuItem>
-                </InsideMenuList>
-              </InsideMenu>
-
-              <Route
-                path={`/show/:id/videos`}
-                render={() => <Video videos={result.videos} />}
-              />
-            </>
-          )}
+          <InsideMenu>
+            <InsideMenuList>
+              <InsideMenuItem active={pathname === `/${type}/${id}/videos`}>
+                <Link to={`/${type}/${id}/videos`}>Videos</Link>
+              </InsideMenuItem>
+              <InsideMenuItem active={pathname === `/${type}/${id}/companies`}>
+                <Link to={`/${type}/${id}/companies`}>Companies</Link>
+              </InsideMenuItem>
+            </InsideMenuList>
+          </InsideMenu>
+          <Route
+            path={`/${type}/:id/videos`}
+            render={() => <Video videos={result.videos} />}
+          />
+          <Route
+            path={`/${type}/:id/companies`}
+            render={() => <Company companies={result.production_companies} />}
+          />
         </Data>
       </Content>
       {error && <Message color="#e74c3c" text={error} />}
