@@ -15,10 +15,11 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   width: 320px;
+  text-align: center;
 `;
 
 const CountryName = styled.span`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 `;
 
