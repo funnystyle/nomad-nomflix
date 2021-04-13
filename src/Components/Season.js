@@ -9,18 +9,18 @@ const Container = styled.div`
 const Box = styled.div`
   background-color: rgba(255, 255, 255, 0.3);
   display: flex;
-  padding: 10px;
+  padding: 5px;
   margin-right: 1%;
   margin-bottom: 10px;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  width: 170px;
+  width: 160px;
   text-align: center;
 `;
 
-const seasonName = styled.div`
-  font-size: 25px;
+const SeasonName = styled.div`
+  font-size: 23px;
   font-weight: 600;
   color: #222;
 `;
@@ -37,13 +37,13 @@ const Season = ({ seasons }) => (
               alt={`${season.name} poster`}
             />
           ) : (
-            <seasonName>{season.name}</seasonName>
+            <SeasonName>{season.name}</SeasonName>
           )}
         </Box>
       ))
     ) : (
       <Box>
-        <seasonName>No Seasons Data</seasonName>
+        <SeasonName>No Seasons Data</SeasonName>
       </Box>
     )}
   </Container>
