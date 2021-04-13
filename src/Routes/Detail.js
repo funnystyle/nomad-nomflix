@@ -5,6 +5,7 @@ import Helmet from "react-helmet";
 import Loader from "Components/Loader";
 import Message from "Components/Message";
 import noPoster from "assets/noPosterSmall.png";
+import IMDBLink from "Components/IMDBLink";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -115,8 +116,7 @@ export default function Detail({
     <Container>
       <Helmet>
         <title>
-          {result.original_title ? result.original_title : result.original_name}{" "}
-          | Nomflix
+          {isMovie ? result.original_title : result.original_name} | Nomflix
         </title>
       </Helmet>
       <Backdrop
@@ -132,13 +132,11 @@ export default function Detail({
         />
         <Data>
           <Title>
-            {result.original_title
-              ? result.original_title
-              : result.original_name}
+            {isMovie ? result.original_title : result.original_name}
           </Title>
           <ItemContainer>
             <Item>
-              {result.release_date
+              {isMovie
                 ? result.release_date
                   ? result.release_date.substring(0, 4)
                   : "-"
@@ -161,6 +159,7 @@ export default function Detail({
                 : "-"}
             </Item>
           </ItemContainer>
+          {isMovie ? <IMDBLink imdb_id={result.imdb_id} /> : ""}
           <Overview>{result.overview}</Overview>
         </Data>
       </Content>
