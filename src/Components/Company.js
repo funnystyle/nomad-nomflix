@@ -7,7 +7,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.25);
   display: flex;
   padding: 10px;
   margin-right: 1%;
@@ -15,10 +15,11 @@ const Box = styled.div`
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  width: 320px;
+  width: 220px;
+  text-align: center;
 `;
 
-const CompanyName = styled.span`
+const CompanyName = styled.div`
   font-size: 23px;
   font-weight: 600;
   color: #222;
@@ -31,7 +32,7 @@ const Company = ({ companies }) => (
         <Box key={company.id}>
           {company.logo_path ? (
             <img
-              src={`https://image.tmdb.org/t/p/w300${company.logo_path}`}
+              src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
               width="300px"
               alt={`${company.name} logo`}
             />
