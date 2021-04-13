@@ -7,7 +7,11 @@ const Container = styled.div`
 
 const IMDBLink = ({ imdb_id }) => (
   <Container>
-    <a href={`https://www.imdb.com/title/${imdb_id}`} target="_blank">
+    <a
+      href={`https://www.imdb.com/title/${imdb_id}`}
+      target="_blank"
+      rel="noreferrer"
+    >
       <svg
         id="home_img"
         class="ipc-logo"
