@@ -8,7 +8,7 @@ const Header = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 45px;
   display: flex;
   align-items: center;
   background-color: rgba(20, 20, 20, 0.8);
@@ -19,8 +19,9 @@ const Header = styled.header`
 const Title = styled.div`
   background-color: #c23616;
   margin-right: 20px;
-  padding: 10px 20px 10px 10px;
+  padding: 22px 20px 13px 10px;
   font-size: 30px;
+  line-height: 30px;
   font-weight: 500;
   color: #f5f6fa;
   border-radius: 0 0 20px 0;
@@ -50,7 +51,9 @@ const SLink = styled(Link)`
 
 export default withRouter(({ location: { pathname } }) => (
   <Header>
-    <Title>Funnflix</Title>
+    <Link to="/">
+      <Title>Funnflix</Title>
+    </Link>
     <List>
       <Item current={pathname === "/" || pathname.startsWith("/movie")}>
         <SLink to="/">Movies</SLink>
