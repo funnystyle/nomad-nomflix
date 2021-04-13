@@ -20,7 +20,7 @@ const Box = styled.div`
 `;
 
 const seasonName = styled.div`
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
   color: #222;
 `;
